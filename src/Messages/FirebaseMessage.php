@@ -9,7 +9,7 @@ class FirebaseMessage
     const PRIORITY_NORMAL = 'normal';
 
     private $title;
-    
+
     private $body;
 
     private $clickAction;
@@ -21,6 +21,8 @@ class FirebaseMessage
     private $priority = self::PRIORITY_NORMAL;
 
     private $fromArray;
+
+    private $fromRow;
 
     public function withTitle($title)
     {
@@ -69,6 +71,20 @@ class FirebaseMessage
         $this->fromArray = $fromArray;
 
         return $this;
+    }
+
+    public function fromRow($fromRow)
+    {
+        $this->fromRow = $fromRow;
+
+        return $this;
+    }
+
+    public function asRow()
+    {
+        if ($this->fromArray) {
+            return Larafirebase::fromRow($this->fromRow)->send();
+        }
     }
 
     public function asNotification($deviceTokens)

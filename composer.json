@@ -9,6 +9,13 @@
             "email": "gentritabazi01@gmail.com"
         }
     ],
+    "repositories": [
+
+        {
+            "type": "vcs",
+            "url": "https://github.com/chamarashalinda/larafirebase"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Kutia\\Larafirebase\\": "src/"
